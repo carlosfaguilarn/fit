@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar primary>
+      <ion-buttons left>
+          <button class="btn-back" (click)="submit()">
+              <ion-icon name="ios-arrow-back"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title>Agrega un alimento</ion-title> 
+  </ion-navbar>
+</ion-header>
+  
+<ion-content>
+  <ion-searchbar class="form-control" name="busqueda" id="busqueda" placeholder="Busca un alimento" [(ngModel)]="busqueda"></ion-searchbar>
+  <ion-list class="search-list">
+    <ion-item *ngFor="let alimento of alimentos | filtro: busqueda async" (click)="elegir(alimento)">
+      {{alimento.descripcion}}
+    </ion-item> 
+  </ion-list>
+  
+  
+
+  <ion-list color="azul">
+      <ion-item-sliding *ngFor="let alimento of seleccionados; let i = index"> 
+        <ion-item>
+          <div class="row">
+            <div class="col-sm-4 little-margin-right">
+              <img src="assets/imgs/plato.png" alt="XX" class="icon-img">
+            </div>
+            <div class="col-sm-8 vertical-align">
+              <h2>{{alimento.descripcion}}: {{alimento.calorias}}</h2>
+              <ion-row justify-centent-center>
+                <ion-col col-4>
+                    <p>HC: {{alimento.carbohidratos}}</p>
+                </ion-col> 
+                <ion-col col-4>
+                    <p>PR: {{alimento.proteinas}}</p>
+                </ion-col>
+                <ion-col col-4>
+                    <p>GR: {{alimento.grasas}}</p>
+                </ion-col>
+              </ion-row>
+            </div>
+          </div>
+        </ion-item> 
+
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="quitar(i)">
+            <ion-icon class="add-ico" ios="ios-trash" md="md-trash"></ion-icon>
+            Quitar
+          </button>
+        </ion-item-options> 
+      </ion-item-sliding>
+    </ion-list>
+</ion-content>

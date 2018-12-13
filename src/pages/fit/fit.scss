@@ -1,0 +1,25 @@
+page-fit { 
+    .contenido{
+        background-color: red;
+    }
+    .progress{
+        width: 100%;
+    }
+    .consumidas{
+        font-size: 18px;
+    }
+    .calorias{
+        color: white;
+        padding: 10px;
+        width: 100%; 
+        height:270px;
+        background-image: url("../../assets/imgs/alimentos.png");
+        background-size: 100% 270px;
+    } 
+    .color-green{
+        color: green;
+    }
+    .color-danger{
+        color: red;
+    }
+}

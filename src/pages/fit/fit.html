@@ -1,0 +1,121 @@
+<ion-content>
+  <div class="calorias">
+    <h1 text-center>{{total_consumidas.calorias}}</h1>
+    <ion-row>
+      <progress-bar class="progress" [progress]="loadProgress"></progress-bar> <br>
+    </ion-row>
+    <p text-center>{{calorias.diarias}} recomendadas</p>    
+  </div>
+  
+  <ion-row>
+    <ion-col col-4>
+      <h6 text-center>Carbohidrato</h6>
+      <p text-center>{{total_consumidas.carbohidratos}}g/355g</p>
+    </ion-col>
+    <ion-col col-4>
+      <h6 text-center>Proteínas</h6>
+      <p text-center>{{total_consumidas.proteinas}}/91g</p>
+    </ion-col>
+    <ion-col col-4>
+      <h6 text-center>Grasas</h6>
+      <p text-center>{{total_consumidas.grasas}}g/81g</p>
+    </ion-col>
+  </ion-row>
+  <hr>
+
+  <ion-list>
+    <!--                         DESAYUNO                    -->
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/desayuno2.png">
+      </ion-avatar>
+      <h2>Desayuno</h2>
+      <p>Lo ideal para ti es: {{calorias.desayuno}}</p>
+
+
+      <button ion-button clear item-end (click)="buscarAlimento('desayuno')" *ngIf="!alimentos_seleccionados.desayuno.calorias > 0">
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      </button>
+      <p item-end *ngIf="alimentos_seleccionados && alimentos_seleccionados.desayuno.calorias > 0">
+        {{alimentos_seleccionados.desayuno.calorias}}
+      </p>
+    </ion-item>
+
+    <!--                          COMIDA                     -->
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/comida.png">
+      </ion-avatar>
+      <h2>Comida</h2>
+      <p>Lo ideal para ti es: {{calorias.comida}}</p>
+
+      <button ion-button clear item-end (click)="buscarAlimento('comida')" *ngIf="!alimentos_seleccionados.comida.calorias > 0">
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      </button>
+      <p item-end *ngIf="alimentos_seleccionados && alimentos_seleccionados.comida.calorias > 0">
+        {{alimentos_seleccionados.comida.calorias}}
+      </p>
+    </ion-item>
+
+    <!--                           CENA                      -->
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/cena.png">
+      </ion-avatar>
+      <h2>Cena</h2>
+      <p>Lo ideal para ti es: {{calorias.cena}}</p>
+
+      <button ion-button clear item-end (click)="buscarAlimento('cena')" *ngIf="!alimentos_seleccionados.cena.calorias > 0">
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      </button>
+      <p item-end *ngIf="alimentos_seleccionados && alimentos_seleccionados.cena.calorias > 0">
+        {{alimentos_seleccionados.cena.calorias}}
+      </p>
+    </ion-item>
+
+    <!--                         APERITIVOS                 -->
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/aperitivo.jpg">
+      </ion-avatar>
+      <h2>Aperitivo</h2>
+      <p>Lo ideal para ti es: {{calorias.aperitivos}}</p>
+
+      <button ion-button clear item-end (click)="buscarAlimento('aperitivo')" *ngIf="!alimentos_seleccionados.aperitivo.calorias > 0">
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      </button>
+      <p item-end *ngIf="alimentos_seleccionados && alimentos_seleccionados.aperitivo.calorias > 0">
+        {{alimentos_seleccionados.aperitivo.calorias}}
+      </p>
+    </ion-item>
+  </ion-list>
+  
+  <!--                          EJERCICIOS                 -->
+  <hr>
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="../../assets/imgs/ejercicio.jpg">
+    </ion-avatar>
+    <h2>Actividad física</h2> 
+    <p *ngIf="calorias_quemadas > 0"> {{calorias_quemadas}}</p>
+
+    <button ion-button clear item-end (click)="buscarEjercicio()" *ngIf="calorias_quemadas <= 0">
+      <ion-icon ios="ios-add" md="md-add"></ion-icon>
+    </button> 
+  </ion-item>
+
+  <hr>
+  <h4 text-center>Tu peso</h4>
+  <ion-row text-center>
+    <ion-col col-6>
+      En la mañana
+      <h2>{{identity.peso}}</h2>
+    </ion-col>
+    <ion-col col-6> 
+      En la tarde
+      <h2 *ngIf="nuevo_peso <= identity.peso" class="color-green"> {{nuevo_peso}}</h2>
+      <h2 *ngIf="nuevo_peso > identity.peso"  class="color-danger">{{nuevo_peso}}</h2>
+    </ion-col>
+  </ion-row>
+  <button ion-button block (click)="actualizarPeso()">Actualizar peso</button>
+</ion-content>

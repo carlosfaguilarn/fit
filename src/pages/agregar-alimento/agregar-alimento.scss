@@ -1,0 +1,13 @@
+page-agregar-alimento {
+    .search-list{
+        height: 250px;
+        overflow-y: auto;
+    }
+    .btn-back{
+        font-size: 25px;
+        background: transparent;
+    }
+    ion-buttons {
+        order: 1
+    }
+}

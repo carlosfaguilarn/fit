@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="tema">
+    <ion-title>Crea tu perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="text-center">
+  <form (ngSubmit)="onSubmit()" class="form-center">
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="user.name" name="name" placeholder="Nombre"></ion-input>
+    </ion-item> 
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="user.email" name="email" placeholder="Correo electrónico"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="user.password" name="password" placeholder="Password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" [(ngModel)]="user.estatura" name="estatura" placeholder="Estatura"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" [(ngModel)]="user.peso" name="peso" placeholder="Peso"></ion-input>
+    </ion-item> 
+
+    <ion-item>
+      <ion-label>Actividad</ion-label>
+      <ion-select name ="actividad" [(ngModel)]="user.actividad">
+        <ion-option name ="actividad" value="1">No muy activo</ion-option> 
+        <ion-option name ="actividad" value="2">Medianamente activo</ion-option> 
+        <ion-option name ="actividad" value="3">Activo</ion-option> 
+        <ion-option name ="actividad" value="4">Muy activo</ion-option>  
+      </ion-select>
+    </ion-item>
+
+    <button ion-button block type="submit">Guardar</button>
+  </form> 
+</ion-content>
