@@ -17,9 +17,11 @@ import {
   AgregarAlimentoPage,
   AgregarEjercicioPage,
   LoginPage,
-  RegistrarPage
+  RegistrarPage,
+  IngredientesPage
 } from "../pages/index.pages";
 import { UserService } from '../providers/user-service';
+import { AlimentosProvider } from '../providers/alimentos';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { UserService } from '../providers/user-service';
     AgregarAlimentoPage,
     AgregarEjercicioPage,
     LoginPage,
-    RegistrarPage
+    RegistrarPage,
+    IngredientesPage
   ],
   imports: [
     BrowserModule,
@@ -50,13 +53,15 @@ import { UserService } from '../providers/user-service';
     AgregarAlimentoPage,
     AgregarEjercicioPage,
     LoginPage,
-    RegistrarPage
+    RegistrarPage,
+    IngredientesPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserService
+    UserService,
+    AlimentosProvider
   ]
 })
 export class AppModule {}

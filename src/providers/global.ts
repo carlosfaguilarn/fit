@@ -1,3 +1,3 @@
 export const GLOBAL = {
-    url: 'https:/heroku.com/api/'
+    url: 'http://80.211.14.125:3001/api/'
 }

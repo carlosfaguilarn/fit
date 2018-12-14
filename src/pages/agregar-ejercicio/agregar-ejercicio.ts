@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController  } from 'ionic-angular';
 import { EJERCICIOS } from "../ejercicios.data";
+import { AlimentosProvider } from "../../providers/alimentos";
  
 @IonicPage()
 @Component({
@@ -8,7 +9,7 @@ import { EJERCICIOS } from "../ejercicios.data";
   templateUrl: 'agregar-ejercicio.html',
 })
 export class AgregarEjercicioPage {
-  public ejercicios = EJERCICIOS;
+  public ejercicios;
   public seleccionados: Array<any>;
   public returns: any; 
 
@@ -16,20 +17,36 @@ export class AgregarEjercicioPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public alertCtrl: AlertController 
+    public alertCtrl: AlertController,
+    public alimentosProvider: AlimentosProvider
   ) {
     this.seleccionados = [];
     this.returns = {calorias:0};
+    this.getEjercicios();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AgregarAlimentoPage');
   }
 
+  getEjercicios(){
+    this.alimentosProvider.getExercises().subscribe(
+      response => {
+        if(!response['rows']){
+          console.log('No se recibieron ejercicios');
+        }else{
+          this.ejercicios = response['rows'];
+        }
+      },error =>{
+
+      }
+    );
+  }
+
   elegir(ejercicio){ 
     //Recibir datos del ejercicio seleccionado
     let datos: any = {
-      calorias: ejercicio.calorias,
+      calorias: ejercicio.kcal,
       actividad: ejercicio.actividad
     };
     

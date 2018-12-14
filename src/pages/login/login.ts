@@ -13,7 +13,7 @@ import { User } from "../../models/user.model";
 
 export class LoginPage{
   loading: Loading;
-  registerCredentials = { email: 'carlos@gmail.com', password: '123456' };
+  registerCredentials = { email: '', password: '' };
   public identity: User;
   public user: User;
  
@@ -23,7 +23,7 @@ export class LoginPage{
     private alertCtrl: AlertController, 
     private loadingCtrl: LoadingController
   ){
-    this.user = new User('4','Carlos Aguilar','21','carlos@gmail.com','12345','168','90.55','4');
+    this.user = new User('4','Carlos Aguilar','21','M','','','168','90.55','4');
   }
  
   public createAccount() {
@@ -32,24 +32,20 @@ export class LoginPage{
 
   public login() {
     this.showLoading();
-    if(this.registerCredentials.email=="carlos@gmail.com"){
-      localStorage.setItem('identity', JSON.stringify(this.user));
-      this.navCtrl.push(TabsPage);
-    }else{
-      this.showError("Acceso denegado");
-    }
-    /* 
+ 
     console.log(this.user);
-    this.userProvider.signup(this.user).subscribe(
+    this.userProvider.login(this.user).subscribe(
       response => {
-        if(!response['user']){
+        if(!response['nutrientes_diarios']){
           this.showError('No se puede acceder');
         }else{ 
-          this.identity = response['user']; 
+          this.identity = response['nutrientes_diarios']['rows'][0];
           localStorage.setItem('identity', JSON.stringify(this.identity));
-          localStorage.setItem('token', (response['token']));
+          localStorage.setItem('nutrientes_diarios', JSON.stringify(response['nutrientes_diarios']));
+          console.log("Identidad: ", JSON.parse(localStorage.getItem('identity')))
           this.navCtrl.push(TabsPage);
         }
+        console.log(response);
       },
       error => {
           var errorMessage = <any> error;
@@ -58,7 +54,7 @@ export class LoginPage{
             this.showError('No se puede ingresar');
           }
       }
-    );*/
+    );
   }
  
   showLoading() {

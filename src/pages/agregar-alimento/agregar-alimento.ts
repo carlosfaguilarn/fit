@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
- 
+import { AlimentosProvider } from "../../providers/alimentos";
+
 @IonicPage()
 @Component({
   selector: 'page-agregar-alimento',
@@ -15,9 +16,10 @@ export class AgregarAlimentoPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public alimentosProvider: AlimentosProvider
   ) {
-    this.alimentos = [
+    /*this.alimentos = [
       {id:1, descripcion:'Huevos', calorias: 34, carbohidratos:12, proteinas: 8, grasas:10},
       {id:2, descripcion:'Pan', calorias: 100, carbohidratos:34, proteinas: 65, grasas:12},
       {id:3, descripcion:'Carne', calorias: 165, carbohidratos:10, proteinas: 12, grasas:22},
@@ -29,13 +31,27 @@ export class AgregarAlimentoPage {
       {id:9, descripcion:'Refresco', calorias: 250, carbohidratos:11, proteinas: 9, grasas:12},
       {id:10, descripcion:'Galleta', calorias: 230, carbohidratos:10, proteinas: 10, grasas:15},
       {id:11, descripcion:'Tortilla', calorias: 60, carbohidratos:9, proteinas: 12, grasas:16},
-    ];
+    ];*/
     this.seleccionados = [];
     this.returns = {calorias:0, carbohidratos: 0, proteinas: 0, grasas: 0};
+    this.getAlimentos();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AgregarAlimentoPage');
+  }
+  getAlimentos(){
+    this.alimentosProvider.getFoods().subscribe(
+      response => {
+        if(!response['alimentos']){
+          console.log('No se recibieron alimentos');
+        }else{
+          this.alimentos = response['alimentos'];
+        }
+      },error =>{
+
+      }
+    );
   }
 
   elegir(alimento){ 

@@ -12,6 +12,10 @@
 
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="recargarTarjetas($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-row justify-content-center>
     <ion-avatar>
       <img class="profile-picture" src="../../assets/imgs/perfil.png">
@@ -30,10 +34,10 @@
             <label>Nombre: </label>
           </ion-col>
           <ion-col col-4>
-            {{identity.name}}
+            {{identity.nombre}}
           </ion-col>
         </ion-row> 
-      </ion-item>
+      </ion-item> 
       <ion-item>
         <ion-row justify-content-end>
           <ion-col col-8>
@@ -70,7 +74,7 @@
             <label>Nivel de actividad: </label>
           </ion-col>
           <ion-col col-4>
-            {{identity.actividad}} 
+            {{identity.nivelActividad}} 
           </ion-col>
         </ion-row> 
       </ion-item>

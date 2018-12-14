@@ -19,6 +19,8 @@ export class FiltroPipe implements PipeTransform {
     return items.filter(function(item){
       if(item.descripcion)
         return item.descripcion.toLowerCase().startsWith(term.toLowerCase());
+      else if(item.actividad)
+      return item.actividad.toLowerCase().startsWith(term.toLowerCase());
       else 
         return item;
     })

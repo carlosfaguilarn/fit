@@ -6,3 +6,4 @@ export { AgregarAlimentoPage } from "./agregar-alimento/agregar-alimento";
 export { AgregarEjercicioPage } from "./agregar-ejercicio/agregar-ejercicio";
 export { LoginPage } from "./login/login";
 export { RegistrarPage } from "./registrar/registrar";
+export { IngredientesPage } from "./ingredientes/ingredientes";

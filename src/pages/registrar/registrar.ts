@@ -17,7 +17,7 @@ export class RegistrarPage {
     public userProvider: UserService,
     public alertCtrl: AlertController
   ) {
-    this.user = new User('','','','','','','','');
+    this.user = new User('','','','','','','','','');
   }
 
   ionViewDidLoad() {
@@ -26,22 +26,21 @@ export class RegistrarPage {
 
   onSubmit(){
     console.log(this.user);
-    this.showPrompt('Información','Usuario registrado correctamente');
-
-    /*this.userProvider.register(this.user).subscribe(
+    this.userProvider.register(this.user).subscribe(
       response => {
-        if(!response['user']){
-          console.log(response['user']);
+        if(!response['insertado']){
           this.showPrompt('Información','No se registró al usuario');
         }else{
           this.showPrompt('Información','Usuario registrado correctamente');
         }
+        console.log(response);
       },
       error => {
           var errorMessage = <any> error;
-          if(errorMessage != null) this.showPrompt('Error', JSON.stringify(errorMessage));
+          if(errorMessage != null) 
+          this.showPrompt('Error', JSON.stringify(errorMessage));
       }
-    );*/
+    );
   }
   showPrompt(title:string, message:string) {
     const prompt = this.alertCtrl.create({

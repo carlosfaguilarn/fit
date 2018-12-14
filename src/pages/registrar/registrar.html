@@ -7,8 +7,18 @@
 <ion-content class="text-center">
   <form (ngSubmit)="onSubmit()" class="form-center">
     <ion-item>
-      <ion-input type="text" [(ngModel)]="user.name" name="name" placeholder="Nombre"></ion-input>
+      <ion-input type="text" [(ngModel)]="user.nombre" name="nombre" placeholder="Nombre"></ion-input>
     </ion-item> 
+    <ion-item>
+      <ion-input type="number" [(ngModel)]="user.edad" name="edad" placeholder="Edad"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Género</ion-label>
+      <ion-select name ="genero" [(ngModel)]="user.genero">
+        <ion-option name ="genero" value="M">Hombre</ion-option> 
+        <ion-option name ="genero" value="F">Mujer</ion-option>  
+      </ion-select>
+    </ion-item>
     <ion-item>
       <ion-input type="text" [(ngModel)]="user.email" name="email" placeholder="Correo electrónico"></ion-input>
     </ion-item>
@@ -24,11 +34,12 @@
 
     <ion-item>
       <ion-label>Actividad</ion-label>
-      <ion-select name ="actividad" [(ngModel)]="user.actividad">
-        <ion-option name ="actividad" value="1">No muy activo</ion-option> 
-        <ion-option name ="actividad" value="2">Medianamente activo</ion-option> 
-        <ion-option name ="actividad" value="3">Activo</ion-option> 
-        <ion-option name ="actividad" value="4">Muy activo</ion-option>  
+      <ion-select name ="nivelActividad" [(ngModel)]="user.nivelActividad">
+        <ion-option name ="nivelActividad" value="1">No muy activo</ion-option> 
+        <ion-option name ="nivelActividad" value="2">Medianamente activo</ion-option> 
+        <ion-option name ="nivelActividad" value="3">Regular</ion-option> 
+        <ion-option name ="nivelActividad" value="4">Activo</ion-option> 
+        <ion-option name ="nivelActividad" value="5">Muy activo</ion-option>  
       </ion-select>
     </ion-item>
 

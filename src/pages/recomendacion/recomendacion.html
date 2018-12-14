@@ -7,19 +7,18 @@
 </ion-header>
 
 <ion-content>
-    <ion-card>
+    <ion-card *ngFor="let recomendacion of recomendaciones">
         <ion-item> 
-            <h2 text-center>Ensalada de pollo</h2> 
+            <h2 text-center>{{recomendacion.tipo}}</h2> 
         </ion-item>
-        <img src="../../assets/imgs/ensalada-pollo.png">
+        <h3>{{recomendacion.titulo}}</h3>
+        <img [src]="recomendacion.img">
         <ion-card-content>
-            <h3>Comida</h3>
-            <p>Ensalada de pechuga de pollo con vegetales y granos, ricos en grasas naturales y proteínas, baja en carbohidratos</p>
+            <h2>{{recomendacion.descripcion}}</h2>
         </ion-card-content>
-        
         <ion-row>
             <ion-col>
-            <button ion-button icon-start clear small color="azul">
+            <button ion-button icon-start clear small color="azul" (click)="verIngredientes(recomendacion.ingredientes)">
                 <ion-icon name="ios-list"></ion-icon>
                 <div>Ver ingredientes</div>
             </button>

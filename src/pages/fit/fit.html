@@ -4,21 +4,21 @@
     <ion-row>
       <progress-bar class="progress" [progress]="loadProgress"></progress-bar> <br>
     </ion-row>
-    <p text-center>{{calorias.diarias}} recomendadas</p>    
+    <p text-center>{{trunc(nutrientes_diarios.calorias.total)}} recomendadas</p>    
   </div>
   
   <ion-row>
     <ion-col col-4>
       <h6 text-center>Carbohidrato</h6>
-      <p text-center>{{total_consumidas.carbohidratos}}g/355g</p>
+      <p text-center>{{total_consumidas.carbohidratos}}g/{{trunc(nutrientes_diarios.carbohidratos)}}g</p>
     </ion-col>
     <ion-col col-4>
       <h6 text-center>Proteínas</h6>
-      <p text-center>{{total_consumidas.proteinas}}/91g</p>
+      <p text-center>{{total_consumidas.proteinas}}/{{trunc(nutrientes_diarios.proteinas)}}g</p>
     </ion-col>
     <ion-col col-4>
       <h6 text-center>Grasas</h6>
-      <p text-center>{{total_consumidas.grasas}}g/81g</p>
+      <p text-center>{{total_consumidas.grasas}}g/{{trunc(nutrientes_diarios.grasas)}}g</p>
     </ion-col>
   </ion-row>
   <hr>
@@ -30,7 +30,7 @@
         <img src="../../assets/imgs/desayuno2.png">
       </ion-avatar>
       <h2>Desayuno</h2>
-      <p>Lo ideal para ti es: {{calorias.desayuno}}</p>
+      <p>Lo ideal para ti es: {{trunc(nutrientes_diarios.calorias.desayuno)}}</p>
 
 
       <button ion-button clear item-end (click)="buscarAlimento('desayuno')" *ngIf="!alimentos_seleccionados.desayuno.calorias > 0">
@@ -47,7 +47,7 @@
         <img src="../../assets/imgs/comida.png">
       </ion-avatar>
       <h2>Comida</h2>
-      <p>Lo ideal para ti es: {{calorias.comida}}</p>
+      <p>Lo ideal para ti es: {{trunc(nutrientes_diarios.calorias.comida)}}</p>
 
       <button ion-button clear item-end (click)="buscarAlimento('comida')" *ngIf="!alimentos_seleccionados.comida.calorias > 0">
         <ion-icon ios="ios-add" md="md-add"></ion-icon>
@@ -63,7 +63,7 @@
         <img src="../../assets/imgs/cena.png">
       </ion-avatar>
       <h2>Cena</h2>
-      <p>Lo ideal para ti es: {{calorias.cena}}</p>
+      <p>Lo ideal para ti es: {{trunc(nutrientes_diarios.calorias.cena)}}</p>
 
       <button ion-button clear item-end (click)="buscarAlimento('cena')" *ngIf="!alimentos_seleccionados.cena.calorias > 0">
         <ion-icon ios="ios-add" md="md-add"></ion-icon>
@@ -79,7 +79,7 @@
         <img src="../../assets/imgs/aperitivo.jpg">
       </ion-avatar>
       <h2>Aperitivo</h2>
-      <p>Lo ideal para ti es: {{calorias.aperitivos}}</p>
+      <p>Lo ideal para ti es: {{trunc(nutrientes_diarios.calorias.aperitivos)}}</p>
 
       <button ion-button clear item-end (click)="buscarAlimento('aperitivo')" *ngIf="!alimentos_seleccionados.aperitivo.calorias > 0">
         <ion-icon ios="ios-add" md="md-add"></ion-icon>
@@ -109,7 +109,7 @@
   <ion-row text-center>
     <ion-col col-6>
       En la mañana
-      <h2>{{identity.peso}}</h2>
+      <h2>{{identity.peso}}</h2> 
     </ion-col>
     <ion-col col-6> 
       En la tarde

@@ -10,7 +10,7 @@
   </ion-header>
     
   <ion-content>
-    <ion-searchbar class="form-control" name="busqueda" id="busqueda" placeholder="Busca un alimento" [(ngModel)]="busqueda"></ion-searchbar>
+    <ion-searchbar class="form-control" name="busqueda" id="busqueda" placeholder="Busca un ejercicio" [(ngModel)]="busqueda"></ion-searchbar>
     <ion-list class="search-list">
       <ion-item *ngFor="let ejercicio of ejercicios | filtro: busqueda async" (click)="elegir(ejercicio)">
         {{ejercicio.actividad}}
